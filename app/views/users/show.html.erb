@@ -1,19 +1,36 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Profile</h1>
+
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<h1>Favorites</h1>
 
-<%# <p>
-  <strong>Password digest:</strong> %>
-  <%# <%= @user.password_digest  %>
-<%# </p> %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+<tbody>
+  <% @user.favorite_blogs.each do |blog| %>
+    <tr>
+      <td><%= blog.title %></td>
+      <td><%= blog.content %></td>
+      <td><%= blog.user_id %></td>
+      <td><%= link_to 'Show', blog %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Blogs', blogs_path %>
